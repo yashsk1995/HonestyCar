@@ -1,0 +1,88 @@
+body {
+    color: #777;
+  }
+.img1{
+    width: 100%;
+    }
+.container{
+    width: 100%;
+    padding-left:0px; 
+}
+.carousel-caption{
+    padding-bottom: 40%;
+
+}
+.imgwqrr{
+width: 70%;
+height: 100%;
+}
+.card1{
+  
+  background-color: white;
+  color: #2d2d30;
+  border: 2px solid gray;
+  box-shadow:2px 5px gray ;
+
+}
+.price1{
+  color: white;
+  font-size: 20px;
+  width: 10%;
+  background: green;
+}
+.miles1{
+  color:gray; 
+  font-size: 18px;
+}
+.btn{
+    background-color: orangered;
+    color: white;
+    width:100px;
+
+}
+.h11{
+    font-size: 50px;
+    color: white;
+}
+.select1{
+    color: black;
+    width: 185px;
+    height: 40px;
+}
+
+
+
+    .navbar {
+        font-family: Montserrat, sans-serif;
+        margin-bottom: 0;
+        background-color: #2d2d30;
+        border: 0;
+        font-size: 11px !important;
+        letter-spacing: 4px;
+        opacity: 0.9;
+      }
+      .navbar li a, .navbar .navbar-brand { 
+        color: #d5d5d5 !important;
+      }
+      .navbar-nav li a:hover {
+        color: #fff !important;
+      }
+      .navbar-nav li.active a {
+        color: #fff !important;
+        background-color: #29292c !important;
+      }
+      footer {
+        background-color: #2d2d30;
+        color: #f5f5f5;
+        padding: 32px;
+      }
+      footer a {
+        color: #f5f5f5;
+      }
+      footer a:hover {
+        color: #777;
+        text-decoration: none;
+      }  
+      .form-control {
+        border-radius: 0;
+      }    

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CMS - Express</title>
+  <!-- Latest compiled and minified CSS & JS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+ 
+  <div class="jumbotron">
+    <h1 class="text-center">Admin pannel</h1>
+  </div>
+
+<!--     
+  `Make`
+  `Model'
+  `Year'
+  'Price' 
+  'Mileage'
+  'DriveType' 
+  'Engine' 
+  'Transmission' 
+  'FuelType' 
+  'MPG' 
+  'Interior' 
+  'Exterior' 
+  'VehicalFeatures' 
+  'Contact' -->
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <p class="cool-font">Make</p>
+        <input class="form-control" type="text" id="Make" placeholder="Enter Your Make">
+        <br>
+        <p class="cool-font">Model</p>
+        <input class="form-control" type="text" id="Model" placeholder="Enter Your Model">
+        <br>
+        <p class="cool-font">Year</p>
+        <input class="form-control" type="text" id="Year" placeholder="Enter Your Year">
+        <br>
+        <p class="cool-font">Price</p>
+        <input class="form-control" type="text" id="Price" placeholder="Enter Your Price">
+        <br>
+        <p class="cool-font">Mileage</p>
+        <input class="form-control" type="text" id="Mileage" placeholder="Enter Your Mileage">
+        <br>
+        <p class="cool-font">DriveType</p>
+        <input class="form-control" type="text" id="DriveType" placeholder="Enter Your DriveType">
+        <br>
+        <p class="cool-font">Engine</p>
+        <input class="form-control" type="text" id="Engine" placeholder="Enter Your Engine">
+        <br>
+        <p class="cool-font">Transmission</p>
+        <input class="form-control" type="text" id="Transmission" placeholder="Enter Your Transmission">
+        <br>
+        <p class="cool-font">FuelType</p>
+        <input class="form-control" type="text" id="FuelType" placeholder="Enter Your FuelType">
+        <br>
+        <p class="cool-font">MPG</p>
+        <input class="form-control" type="text" id="MPG" placeholder="Enter Your MPG">
+        <br>
+        <p class="cool-font">Interior</p>
+        <input class="form-control" type="text" id="Interior" placeholder="Enter Your Interior">
+        <br>
+        <p class="cool-font">Exterior</p>
+        <input class="form-control" type="text" id="Exterior" placeholder="Enter Your Exterior">
+        <br>
+        <p class="cool-font">VehicalFeatures</p>
+        <textarea class="form-control" type="text" id="VehicalFeatures" placeholder="Enter Your VehicalFeatures"> </textarea>
+        <br>
+        <p class="cool-font">Contact</p>
+        <input class="form-control" type="text" id="Contact" placeholder="Enter Your Contact">
+        <br>
+
+      
+        <button id="chirp-submit" class="btn btn-lg pull-right">Submit!</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2>List</h2>
+        <hr>
+        <div id="chirp-area"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/cms.js" type="text/javascript"></script>
+
+</body>
+
+</html>
