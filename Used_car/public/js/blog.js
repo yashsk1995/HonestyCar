@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+
+  $("#searchQuery").hide() ; 
+  $("#searchQuery").trigger("click");
   // blogContainer holds all of our posts
   var blogContainer = $(".blog-container");
   var postCategorySelect = $("#category");
@@ -130,9 +134,34 @@ $(document).ready(function() {
 
 });
 
+// Yash cOde
 
+// 1.
+$(".select12").change(function(){
+  $("#searchQuery").trigger("click");
 
-// Yash cOde 
+})
+$("#price1").on('input',function(){
+  $("#searchQuery").trigger("click");
+
+})
+$("#price2").on('input',function(){
+  $("#searchQuery").trigger("click");
+  
+})
+$("#year1").on('input',function(){
+  $("#searchQuery").trigger("click");
+  
+})
+$("#year2").on('input',function(){
+  $("#searchQuery").trigger("click");
+  
+})
+$("input[name='optradio']").change(function(){
+  $("#searchQuery").trigger("click");
+
+})
+
 
 $("#searchQuery").on("click", function(event) {
   event.preventDefault();
@@ -142,9 +171,12 @@ $("#searchQuery").on("click", function(event) {
     var yourArray =$(".select12 :selected").text();
     //  $("input[name='type']:checked").val();
     console.log(yourArray);
+    // console.log($("input[name='optradio']:checked").attr('value1');
 
   var Minprice1= $("#price1").val();
   var Maxprice2= $("#price2").val();
+  // var Minprice1 = $("input[name='optradio']:checked").attr('value1');
+  // var Minprice1 = $("input[name='optradio']:checked").attr('value2');
   var Minyear1= $("#year1").val();
   var Maxyear2= $("#year2").val();
   var Mileage = $("input[name='optradio']:checked").val();
@@ -289,20 +321,23 @@ $.get("/api/posts/last10/jioj", function(data) {
 $(".resultHome1").html(html);
 })
 // })
-var newitem="Acura";
 
 
 $("#Search132").on("click",function(req,res){
   // newitem = "";
-  var Anw =$(".select1 :selected").text();
-  console.log(Anw);
+  document.cookie = "";
+    var Anw =$(".select1 :selected").text();
+  document.cookie = Anw;
+
+  // localStorage.setItem.image = 1;
+
   // newitem=Anw;
   // console.log("newirem"+ newitem);
 
 
 
     // var yourArray =$(".select12 :selected").text();
-$(".select12").val(Anw);
+// $(".select12").val(Anw);
 
 });
 
