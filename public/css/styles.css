@@ -1,5 +1,5 @@
 body {
-  font: 400 15px/1.8 Lato, sans-serif;
+  /* font: 400 15px/1.8 Lato, sans-serif; */
   color: #777;
 }
 h3, h4 {      
@@ -7,8 +7,13 @@ h3, h4 {
   color: #111;
   letter-spacing: 8px;
 }
-/* .container {
-  /* padding: 80px 140px; */
+.container {
+   width:100%;
+}
+.slider1234{
+  width: 500px;
+  height: 300px;
+}
 .person {
   border: 10px solid transparent;
   margin-bottom: 25px;
@@ -18,16 +23,24 @@ h3, h4 {
 }
 .row{
   width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 .col-md-9{
-    padding-left: 0px;
     padding-right: 0px;
-}
+} 
 .col-md-3{
   padding-left: 0px;
   padding-right: 0px;
+} 
+p{
+  margin: 15px;
 }
-
+.readmore{
+  width: 100%;
+  background-color: black;
+  color: wheat;
+}
 .person:hover {
   border-color: red;
 }
@@ -204,7 +217,15 @@ footer a:hover {
   }
   .miles1{
     color:gray; 
-    font-size: 18px;
+    font-size: 25px;
+  }
+  .MPG{
+    color:gray; 
+    font-size: 25px;
+  }
+  .Interior{
+    color:gray; 
+    font-size: 20px;
   }
 textarea {
   resize: none;
@@ -215,9 +236,17 @@ textarea {
   width: 100px;
 
 }
+.card11{
+  background-color: white;
+  color: #2d2d30;
+  border: 2px solid gray;
+  box-shadow:3px 5px lightgrey ;
+}
 .advanced{
   font-size: 15px;
   color: black;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 hr { background-color: red; height: 1px; border: 0; width: 100%;}
+
+

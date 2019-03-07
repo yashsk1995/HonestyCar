@@ -3,135 +3,6 @@ $(document).ready(function() {
 
   $("#searchQuery").hide() ; 
   $("#searchQuery").trigger("click");
-  // blogContainer holds all of our posts
-  var blogContainer = $(".blog-container");
-  var postCategorySelect = $("#category");
-  // Click events for the edit and delete buttons
-  $(document).on("click", "button.delete", handlePostDelete);
-  $(document).on("click", "button.edit", handlePostEdit);
-  postCategorySelect.on("change", handleCategoryChange);
-  var posts;
-
-  // This function grabs posts from the database and updates the view
-  function getPosts(category) {
-    var categoryString = category || "";
-    if (categoryString) {
-      categoryString = "/category/" + categoryString;
-    }
-    $.get("/api/posts" + categoryString, function(data) {
-      console.log("Posts", data);
-      console.log("jhikbbjkbjkl");
-      posts = data;
-      if (!posts || !posts.length) {
-        displayEmpty();
-      }
-      else {
-        initializeRows();
-      }
-    });
-  }
-
-  // This function does an API call to delete posts
-  function deletePost(id) {
-    $.ajax({
-      method: "DELETE",
-      url: "/api/posts/" + id
-    })
-      .then(function() {
-        getPosts(postCategorySelect.val());
-      });
-  }
-
-  // Getting the initial list of posts
-  getPosts();
-  // InitializeRows handles appending all of our constructed post HTML inside
-  // blogContainer
-  function initializeRows() {
-    blogContainer.empty();
-    var postsToAdd = [];
-    for (var i = 0; i < posts.length; i++) {
-      postsToAdd.push(createNewRow(posts[i]));
-    }
-    blogContainer.append(postsToAdd);
-  }
-
-  // This function constructs a post's HTML
-  function createNewRow(post) {
-    var newPostCard = $("<div>");
-    newPostCard.addClass("card");
-    var newPostCardHeading = $("<div>");
-    newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-default");
-    var newPostTitle = $("<h2>");
-    var newPostDate = $("<small>");
-    var newPostCategory = $("<h5>");
-    newPostCategory.text(post.category);
-    newPostCategory.css({
-      float: "right",
-      "font-weight": "700",
-      "margin-top":
-      "-15px"
-    });
-    var newPostCardBody = $("<div>");
-    newPostCardBody.addClass("card-body");
-    var newPostBody = $("<p>");
-    newPostTitle.text(post.title + " ");
-    newPostBody.text(post.body);
-    var formattedDate = new Date(post.createdAt);
-    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
-    newPostDate.text(formattedDate);
-    newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
-    newPostCardHeading.append(editBtn);
-    newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostCategory);
-    newPostCardBody.append(newPostBody);
-    newPostCard.append(newPostCardHeading);
-    newPostCard.append(newPostCardBody);
-    newPostCard.data("post", post);
-    return newPostCard;
-  }
-
-  // This function figures out which post we want to delete and then calls
-  // deletePost
-  function handlePostDelete() {
-    var currentPost = $(this)
-      .parent()
-      .parent()
-      .data("post");
-    deletePost(currentPost.id);
-  }
-
-  // This function figures out which post we want to edit and takes it to the
-  // Appropriate url
-  function handlePostEdit() {
-    var currentPost = $(this)
-      .parent()
-      .parent()
-      .data("post");
-    window.location.href = "/cms?post_id=" + currentPost.id;
-  }
-
-  // This function displays a message when there are no posts
-  function displayEmpty() {
-    blogContainer.empty();
-    var messageH2 = $("<h2>");
-    messageH2.css({ "text-align": "center", "margin-top": "50px" });
-    messageH2.html("No posts yet for this category, navigate <a href='/cms'>here</a> in order to create a new post.");
-    blogContainer.append(messageH2);
-  }
-
-  // This function handles reloading new posts when the category changes
-  function handleCategoryChange() {
-    var newPostCategory = $(this).val();
-    getPosts(newPostCategory);
-  }
-
 });
 
 // Yash cOde
@@ -241,7 +112,7 @@ $("#searchQuery").on("click", function(event) {
 
     html+="<br>";
     html+="<div class='container'>";
-    html+="<div class='row card1'>";
+    html+="<div class='row card11'>";
     html+="<div class='col-md-3'>";
     html+="<img class='imgwqrr' src='./img/p2.jpg' alt='Car img' />"
     html+="</div>";
@@ -249,20 +120,82 @@ $("#searchQuery").on("click", function(event) {
     html += "<h3 class='card-title1 '><b>" + data[i].Make +" "+ data[i].Model +" </b></h3>";
     html += "<p class='card-text1 price1'> $ "+data[i].Price +"</p>" ;
     html += "<p class='card-text1 miles1'><i class='fa fa-automobile' style='font-size:20px'></i><b> "+data[i].Mileage +" miles</b> </p>";
-    html += "<p class='card-text1'> "+data[i].MPG +"</p>";
-    html += "<p class='card-text1'> <i class='fa fa-bullseye'></i> Interior -    "+data[i].Interior +"  <i class='fa fa-bullseye'></i>"+"   "+"  DriveType -   "+ data[i].DriveType+ "  <i class='fa fa-bullseye'></i> Transmission -    "+ data[i].Transmission+"</p>";
-      
+    html += "<p class='card-text1 MPG'> "+data[i].MPG +"</p>";
+    html += "<p class='card-text1 Interior'> <i class='fa fa-bullseye'></i> Interior -    "+data[i].Interior +"  <i class='fa fa-bullseye'></i>"+"   "+"  DriveType -   "+ data[i].DriveType+ "  <i class='fa fa-bullseye'></i> Transmission -    "+ data[i].Transmission+"</p>";
+    html += "<button class='readmore"+data[i].id +"  readmore' data-id="+data[i].id +" >Read More...</button>";
+    html += "<div class='message" +data[i].id +" msg'  data-id="+data[i].id +"> "+data[i].Engine +"  </div>";
+    html += "<div class='message" +data[i].id +" msg'  data-id="+data[i].id +"> "+data[i]. FuelType+"  </div>";
+    html += "<div class='message" +data[i].id +" msg'  data-id="+data[i].id +"> "+data[i].VehicalFeatures +"  </div>";
+    html += "<div class='message" +data[i].id +" msg'  data-id="+data[i].id +"> "+data[i].Contact +"  </div>";
+ 
+   
+// slider
+
+//  html+= "<div id='myCarousel' class='carousel slide slider1234' data-ride='carousel'>";
+ 
+//  html+= " <ol class='carousel-indicators'>"
+//  html+= "<li data-target='#myCarousel' data-slide-to='0' class='active'></li>";
+//  html+= "<li data-target='#myCarousel' data-slide-to='1'></li>";
+//  html+= "<li data-target='#myCarousel' data-slide-to='2'></li>";
+//  html+= "</ol>";
+
+//  html+= "<div class='carousel-inner'>";
+//  html+= "<div class='item active'>";
+//  html+= "<img src='../img/p1.jpg' alt='car4'>";
+//  html+= "</div>";
+
+//   html+= "<div class='item'>";
+//   html+= "<img src='../img/p2.jpg' alt='car2'>";
+//   html+= "</div>";
+
+//   html+=  "<div class='item'>";
+//   html+=  "<img src='../img/p3.jpg' alt='car3'>";
+//   html+=  "</div>"
+//   html+=  "</div>"
+
+  
+//   html+= "<a class='left carousel-control' href='#myCarousel' data-slide='prev'>";
+//   html+=  "<span class='glyphicon glyphicon-chevron-left'></span>";
+//   html+=  "<span class='sr-only'>Previous</span>";
+//   html+=  "</a>";
+//   html+=  "<a class='right carousel-control' href='#myCarousel' data-slide='next'>";
+//   html+=   "<span class='glyphicon glyphicon-chevron-right'></span>";
+//   html+=   "<span class='sr-only>Next</span>";
+//   html+=   "</a>";
+//   html+=   "</div>";
+
+// slider finish
+
+  
     html+="</div>";    
     html+="</div>";    
     html+="</div>";    
+    html+="</div>";
+    html+="</div>"; 
+    
+    
+    $(document).ready(function() {
+    $(".msg").hide();
+    $("button.readmore").click(function(){
+    var id= $(this).data("id");
+    // $(".message").arr("slow");   
+    $(".message"+ $(this).data("id")).show("slow");
 
 
+        // $(this).data("id").show("slow");
+        $("button.readmore").click(function(){
+          $(".message"+ $(this).data("id")).hide();
+          // $(this).data("id").hide();
 
-  }
+
+        
+      });  
+      }
+      )}
+  )}
 $(".result").html(html);
 
   });
-
 })
 
 
