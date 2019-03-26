@@ -46,6 +46,20 @@
         <p class="cool-font">Year</p>
         <input class="form-control" type="text" id="Year" placeholder="Enter Your Year">
         <br>
+        <!-- Select images: <input type="file" name="img" id="imgesInput" multiple> -->
+        <!-- <input type="button" id="imageUpload" /> -->
+<!-- 
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <input type="file" accept="image/*" name="photo" >
+          <input type="submit" value="upload">
+      </form> -->
+      <form id="frmUploader" enctype="multipart/form-data" action="/upload" method="post"> 
+        <input type="file" name="imgUploader" id="basicUploadFile" multiple /> 
+        <input type="submit" name="submit" id="btnSubmit" value="Upload" /> 
+        
+        <input type="button" id="ghjikopsubmit" /> 
+    </form> 
+        <br>
         <p class="cool-font">Price</p>
         <input class="form-control" type="text" id="Price" placeholder="Enter Your Price">
         <br>

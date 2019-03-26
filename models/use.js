@@ -63,8 +63,11 @@ module.exports = function(sequelize, DataTypes) {
   },
   Contact: {
     type: DataTypes.INTEGER,
+  },
+  images:{
+    type:DataTypes.STRING
   }
-
+  
   });
-  return Use;
+  return Use;   
 };

@@ -1,9 +1,17 @@
-
-
+// $("#ghjikopsubmit").on("click", function(event) {
+  // console.log(typeof(names));
+  // console.log("file name "+ namesNew);
 // When user chirps (clicks addBtn)
+// })
 $("#chirp-submit").on("click", function(event) {
   event.preventDefault();
-
+  var files = $('#basicUploadFile').prop("files");
+  var names = $.map(files, function(val) { return val.name; });
+//  var names= JSON.stringify(files);
+    // names.toString();
+    namesNew =names.join(", ")
+    
+  
   // Make a car object
   var car = {
     Make: $("#Make").val().trim(),
@@ -20,6 +28,7 @@ $("#chirp-submit").on("click", function(event) {
     Exterior: $("#Exterior").val().trim(),
     VehicalFeatures: $("#VehicalFeatures").val().trim(),
     Contact: $("#Contact").val().trim(),
+    images:namesNew
    
 
   
@@ -35,6 +44,23 @@ $("#chirp-submit").on("click", function(event) {
     // On success, run the following code
     .then(function() {
 
+        $("#btnSubmit").trigger("click");
+      
+
+       $("#Make").val("");
+       $("#Model").val("");
+       $("#Year").val("");
+       $("#Price").val("");
+       $("#Mileage").val("");
+       $("#DriveType").val("");
+       $("#Engine").val("");
+       $("#Transmission").val("");
+       $("#FuelType").val("");
+       $("#MPG").val("");
+       $("#Interior").val("");
+       $("#Exterior").val("");
+       $("#VehicalFeatures").val("");
+       $("#Contact").val("");
       // var row = $("<div>");
       // row.addClass("chirp");
 
@@ -45,8 +71,24 @@ $("#chirp-submit").on("click", function(event) {
       // $("#chirp-area").prepend(row);
 
     });
+    // $.post("/upload").then(function(){
+
+
+    // });
 
   // Empty each input box by replacing the value with an empty string
   // $("#author").val("");
   // $("#chirp-box").val("");
 });
+
+
+// $("#imageUpload").on("click",function(){
+  // var blobFile = $('#imgesInput').files[0];
+  // var formData = new FormData();
+  // formData.append("fileToUpload", blobFile);
+
+
+// $.post("/upload_images",form);
+
+// })
+

@@ -2,6 +2,23 @@ body {
   /* font: 400 15px/1.8 Lato, sans-serif; */
   color: #777;
 }
+
+.modalCss{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+
+}
+.carousel-control.left,
+.carousel-control.right {
+  background: transparent;
+}
+
+.carousel-inner img{
+  -webkit-filter: none;
+  filter:none;
+
+}
 h3, h4 {      
   font-size: 15px;
   color: #111;
@@ -36,18 +53,25 @@ h3, h4 {
 p{
   margin: 15px;
 }
+.ReatailHead{
+  font-size: 20px;
+  font-weight: bold;
+  color:black;
+
+}
 .readmore{
-  width: 100%;
-  background-color: black;
-  color: wheat;
+  width: 90%;
+  font-size: 25px;
+  background-color:rgba(46, 42, 42, 0.753);
+  color: white;
 }
 .person:hover {
   border-color: red;
 }
 .carousel-inner img {
-  -webkit-filter: grayscale(90%);
-  filter: grayscale(90%); /* make all photos black and white */ 
-  width: 80%;
+  /* make all photos black and white */ 
+  width: 60%;
+  height: 100px;
   margin: auto;
 }
 .carousel-caption h3 {
@@ -199,9 +223,40 @@ footer a:hover {
   border-radius: 0;
 }
 .imgwqrr{
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+  
+  /* height: 0%; */
   }
+  /* .imgslIder{
+    height: 400px;
+    width: 400px; */
+  /* } */
+  .gyphfiiconSLider{
+    background: #303070;
+  }
+  .carousel-inner{
+    width: 100%;
+  }
+.imgwqrr:hover {
+  cursor: pointer;
+  
+  width: 100%;
+}
+.TextDeatils{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 25px;
+  color: black;
+  font-weight: bold;
+}
+.FeatVehical{
+  color: black;
+  font-weight: bold;
+}
   .card1{
     width: 95%;
     background-color: white;
@@ -209,9 +264,13 @@ footer a:hover {
     border: 1px solid gray;
     /* box-shadow:1px 4px rgb(158, 148, 148) ; */
   }
+  .texTLeft
+  {
+    text-align: left;
+  }
   .price1{
     color: white;
-    font-size: 15px;
+    font-size: 25px;
     
     background: green;
   }
@@ -236,11 +295,22 @@ textarea {
   width: 100px;
 
 }
+.HeadingCARD{
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+
+}
+.newhr{
+  border-color: #29292c;
+  background-color: #29292c;
+
+}
 .card11{
   background-color: white;
-  color: #2d2d30;
-  border: 2px solid gray;
-  box-shadow:3px 5px lightgrey ;
+  /* color: #2d2d30; */
+  /* border: 2px solid gray; */
+  /* box-shadow:3px 5px grey ; */
 }
 .advanced{
   font-size: 15px;

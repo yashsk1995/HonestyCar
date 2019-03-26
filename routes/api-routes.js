@@ -1,3 +1,5 @@
+global.Locate = "";
+
 // *********************************************************************************
 // api-routes.js - this file offers a set of routes for displaying and saving data to the db
 // *********************************************************************************
@@ -7,11 +9,40 @@
 
 // Requiring our Todo model
 var db = require("../models");
+let formidable = require('formidable');
+var fs = require('fs');
+const multer = require('multer');
+
+// const upload = multer({dest: __dirname + '/uploads'});
+
+var Storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+      callback(null, global.Locate);
+  },
+  filename: function (req, file, callback) {
+      callback(null,file.originalname);
+  }
+});
+
+var upload = multer({ storage: Storage }).array("imgUploader", 20); //Field name and max count
 
 // Routes
 // =============================================================
 module.exports = function(app) {
-
+  app.post('/upload', (req, res) => {
+    // if(req.file) {
+    //     res.json(req.file);
+    // }
+    // else throw 'error';
+    upload(req, res, function (err) { 
+      if (err) {
+        console.log(err); 
+          return; 
+          
+      } 
+      return ; 
+  }); 
+  });
   // GET route for getting all of the posts
   app.get("/api/cars/", function(req, res) {
     db.Use.findAll({})
@@ -50,7 +81,7 @@ app.get("/api/posts/last10/jioj",function(req,res){
   console.log("bgyuigfhidhdbjidjhbdbjdiijbasjdio");
     console.log("hellow");
     db.Use.findAll({
-      limit: 4,
+      limit: 20,
       where: {
         //your where conditions, or without them if you need ANY entry
       },
@@ -88,7 +119,7 @@ app.get("/api/posts/last10/jioj",function(req,res){
     })
       .then(function(dbPost) {
        res.json(dbPost);
-        console.log(dbPost);
+        console.log("conslolsfnaajkl"+dbPost);
       });
   });
 
@@ -133,7 +164,7 @@ app.get("/api/posts/last10/jioj",function(req,res){
   app.post("/api/new", function(req, res) {
     console.log("cars Data:");
     console.log(req.body);
-    
+ 
     db.Use.create({
       Make: req.body.Make, 
       Model:req.body.Model, 
@@ -148,10 +179,23 @@ app.get("/api/posts/last10/jioj",function(req,res){
               Interior:req.body.Interior,
                Exterior:req.body.Exterior,
                 VehicalFeatures:req.body.VehicalFeatures,
-                 Contact:req.body.Contact
+                 Contact:req.body.Contact,
+                 images:req.body.images
     
     })
       .then(function(dbPost) {
+        var id = dbPost.id;
+        var dir = './public/img/id_'+id;
+
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir);
+        }
+
+        global.Locate = dir;
+          
+       
+        // console.log(dbPost);
+        // console.log("id" + dbPost.id);
         res.json(dbPost);
       });
     
@@ -195,4 +239,54 @@ app.get("/api/posts/last10/jioj",function(req,res){
     //   res.end();
     // });
   });
+//   app.post('/upload_images', (request, response, next) => {
+//     let formidable = require('formidable');
+   
+   
+   
+//     // parse a file upload
+//     var form = new formidable.IncomingForm();
+//     form.uploadDir = "./uploads";
+//     form.keepExtensions = true;
+//     form.maxFieldsSize = 10 * 1024 * 1024; //10 MB
+//     form.multiples = true;
+//     form.parse(request, (err, fields, files) => {
+//         if (err) {
+//             response.json({
+//                 result: "failed",
+//                 data: {},
+//                 messege: `Cannot upload images.Error is : ${err}`
+//             });
+//         }
+        
+//         var arrayOfFiles = [];
+//         if(files[""] instanceof Array) {
+//             arrayOfFiles = files[""];
+//         } else {
+//             arrayOfFiles.push(files[""]);
+//         }
+        
+//         if (arrayOfFiles.length > 0) {
+//             var fileNames = [];
+//             arrayOfFiles.forEach((eachFile)=> {
+//                 // fileNames.push(eachFile.path)
+//                 fileNames.push(eachFile.path.split('/')[1]);
+//             });
+//             response.json({
+//                 result: "ok",
+//                 data: fileNames,
+//                 numberOfImages: fileNames.length,
+//                 messege: "Upload images successfully"
+//             });
+//         } else {
+//             response.json({
+//                 result: "failed",
+//                 data: {},
+//                 numberOfImages: 0,
+//                 messege: "No images to upload !"
+//             });
+//         }
+//     });
+// });
+
 };
